@@ -16,6 +16,9 @@ set interrupts to answer is {"Yes"}
 delay 1
 display notification "Notifications: " & notifications & "\nInterruptions: " & interrupts with title "Now starting eqMac Helper..." subtitle "github.com/chad-cros/eqMac2-Helper"
 
+if not application "eqMac2" is running then
+	tell application "eqMac2" to activate
+
 #Loop to continuously reset eqMac here
 repeat
 	#--
