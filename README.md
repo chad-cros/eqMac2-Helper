@@ -1,4 +1,4 @@
-# eqMac2-Helper
+# eqMac2 Helper
 Some applescripts to help with the eqMac2 crackling
 
 While we wait for either the dev of eqMac2 to release his new version, or Apple fixes their
