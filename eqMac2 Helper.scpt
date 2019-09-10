@@ -14,7 +14,7 @@ set interrupts to answer is {"Yes"}
 
 # Tell user that eqMacHelper is running with the given config
 delay 1
-display notification "Notifications: " & notifications & "\nInterruptions: " & interrupts with title "Now starting eqMac Helper..."
+display notification "Notifications: " & notifications & "\nInterruptions: " & interrupts with title "Now starting eqMac Helper..." subtitle "github.com/chad-cros/eqMac2-Helper"
 
 #Loop to continuously reset eqMac here
 repeat
@@ -72,7 +72,9 @@ repeat
 			end if
 		end tell
 		# -- Check if the song playing is still the same song. If it is, move on to killing eqMac
-		# -- If not, check if the user enabled interrupts. If they
+		# -- If not, check if the user enabled interrupts. If interrupts are enabled, go ahead and restart
+		# -- eqMac anyway, else wait until the new song is finished.
+		# -- TODO: Implement some sort of continue statement here, rather than a dummy delay.
 		if current_track is track_name then
 			delay 0.1
 		else
