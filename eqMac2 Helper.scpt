@@ -200,3 +200,5 @@ repeat
 		end if
 	end if
 end repeat
+
+tell application "eqMac2" to quit
