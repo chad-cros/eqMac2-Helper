@@ -110,7 +110,7 @@ repeat
 	if current_player is "Spotify" then
 		if application "Spotify" is running then
 			tell application "Spotify"
-				if player state is stopped then
+				if not player state is playing then
 					exit repeat
 				else
 					set current_track to name of current track
@@ -138,7 +138,7 @@ repeat
 	else
 		if application "iTunes" is running then
 			tell application "iTunes"
-				if player state is stopped then
+				if not player state is playing then
 					exit repeat
 				else
 					set current_track to name of current track
