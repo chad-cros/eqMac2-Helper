@@ -29,7 +29,7 @@ repeat
 	#--
 	if application "Spotify" is running then
 		tell application "Spotify"
-			if player state is stopped then
+			if not player state is playing then
 				exit repeat
 			else
 				set track_artist to artist of current track
@@ -67,30 +67,10 @@ repeat
 	#--
 	# This handles the case when the song should be done playing. It again checks if spotify is running, and exits the loop if it's not.
 	#--
-<<<<<<< HEAD
-	if current_player is "Spotify" then
-		if application "Spotify" is running then
-			tell application "Spotify"
-				if not player state is playing then
-					exit repeat
-				else
-					set current_track to name of current track
-					set track_duration to round ((duration of current track) / 1000) rounding up
-					set seconds_played to round (player position / 1) rounding down
-				end if
-			end tell
-			# -- Check if the song playing is still the same song. If it is, move on to killing eqMac
-			# -- If not, check if the user enabled interrupts. If interrupts are enabled, go ahead and restart
-			# -- eqMac anyway, else wait until the new song is finished.
-			# -- TODO: Implement some sort of continue statement here, rather than a dummy delay.
-			if current_track is track_name then
-				delay 0.1
-=======
 	if application "Spotify" is running then
 		tell application "Spotify"
-			if player state is stopped then
+			if not player state is playing then
 				exit repeat
->>>>>>> parent of cf44e13... Updated script
 			else
 				set current_track to name of current track
 				set track_duration to round ((duration of current track) / 1000) rounding up
@@ -104,33 +84,8 @@ repeat
 		if current_track is track_name then
 			delay 0.1
 		else
-<<<<<<< HEAD
-			exit repeat
-		end if
-	else
-		if application "iTunes" is running then
-			tell application "iTunes"
-				if not player state is playing then
-					exit repeat
-				else
-					set current_track to name of current track
-					set track_duration to round ((duration of current track) / 1000) rounding up
-					set seconds_played to round (player position / 1) rounding down
-				end if
-			end tell
-			# -- Check if the song playing is still the same song. If it is, move on to killing eqMac
-			# -- If not, check if the user enabled interrupts. If interrupts are enabled, go ahead and restart
-			# -- eqMac anyway, else wait until the new song is finished.
-			# -- TODO: Implement some sort of continue statement here, rather than a dummy delay.
-			if current_track is track_name then
-=======
-			if interrupts then
->>>>>>> parent of cf44e13... Updated script
-				delay 0.1
-			else
-				# do shell script ("caffeinate -dit " & (track_duration - seconds_played + 1))
-				delay (track_duration - seconds_played)
-			end if
+			# do shell script ("caffeinate -dit " & (track_duration - seconds_played + 1))
+		delay (track_duration - seconds_played)
 		end if
 	end if
 	
